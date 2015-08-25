@@ -17,6 +17,7 @@ Component List
 - [x] MessageBox
 - [x] Checkbox
 - [x] DatePicker
+- [x] ColorPicker
 
 #### Button
 <p align="center">
@@ -71,6 +72,11 @@ Component List
 #### DatePicker
 <p align="center">
 <img style="-webkit-user-select: none;" src="https://github.com/fpt-software/Material-Controls-for-Sencha-Touch/blob/master/Images/DatePicker.gif">
+</p>
+
+#### ColorPicker
+<p align="center">
+<img style="-webkit-user-select: none;" src="https://github.com/fpt-software/Material-Controls-for-Sencha-Touch/blob/master/Images/ColorPicker.gif">
 </p>
 
 # Get Started
