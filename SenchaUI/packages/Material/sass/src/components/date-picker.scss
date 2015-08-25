@@ -367,6 +367,21 @@
     }
 
   }
+  // for colorpicker
+  .x-panel.x-floating
+  {
+    background-color: #ffffff!important;
+    border-radius: 0px!important;
+  }
+  .x-toolbar.x-toolbar-dark .x-button
+  {
+    &:focus,
+    &:hover {
+      background: #EEEEEE!important;
+      background-color: #EEEEEE ;
+    }
+  }
+  // end colorpicker
 }
 
 

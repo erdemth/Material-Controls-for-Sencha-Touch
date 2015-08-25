@@ -7,11 +7,11 @@
  *
  */
 Ext.define('Material.components.field.DatePicker', {
-    override: 'Ext.field.DatePicker',
+    extend: 'Ext.field.DatePicker',
     requires: [
         'Material.components.DatePicker'
     ],
-
+       xtype:'md-datepicker',
     updateValue: function(newValue, oldValue) {
         var me     = this;
 

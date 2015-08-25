@@ -16,16 +16,18 @@ Ext.define('SenchaUI.view.Main', {
         'Material.components.field.SelectPanel',        //ok
         'Material.components.field.Select',             //ok
         'Material.components.DatePicker',
-        'Material.components.field.DatePicker'
+        'Material.components.field.DatePicker',
+        'Material.components.ColorPickerMain'
     ],
 
     config: {
+
 
         items: [
             {
                 xtype: 'panel',
                 id: '_button',
-                style: 'background-color:white',
+                style: 'background-color:white; font-size:1px',
                 title: 'BUTTON',
                 items: [
                     {
@@ -297,7 +299,8 @@ Ext.define('SenchaUI.view.Main', {
                                 max: 100,
                                 step: 1,
                                 min: 0,
-                                type: 'notick'
+                                type: 'notick',
+                                codeColor: 'red'
                                 //centered:true
 
                             },
@@ -355,8 +358,9 @@ Ext.define('SenchaUI.view.Main', {
                                 max: 100,
                                 min: 0,
 
-                                type: 'tickSingleLeft'
+                                type: 'tickSingleLeft',
                                 //centered:true
+                                tick: 'hidden'
 
                             }
 
@@ -567,6 +571,7 @@ Ext.define('SenchaUI.view.Main', {
                 items: {
                     xtype: 'list',
                     centered: true,
+                    cls: 'forList',
                     itemTpl: '{title}',
                     data: [
                         { title: 'Item 1' },
@@ -939,10 +944,77 @@ Ext.define('SenchaUI.view.Main', {
                 style: 'background-color:white',
                 title: 'DATE-PICKER',
                 items: {
-                    xtype: 'datepickerfield',
+                    xtype: 'md-datepicker',
                     centered: true
 
                 }
+            },
+            {
+                xtype: 'panel',
+                id: '',
+                style: 'background-color:white',
+                title: 'COLOR-PICKER',
+                items: [
+                    {
+                        xtype: 'md-ColorPickerMain',
+                        top:0,
+                        left:0,
+
+
+                        listeners: {
+                            onColorChanged: function (cmp) {
+                                 alert(cmp.oldValue + "," + cmp.newValue);
+                            }
+                        }
+                    } ,
+                    {
+                        xtype: 'md-ColorPickerMain',
+                        bottom:40,
+                        left:0,
+
+
+                        listeners: {
+                            onColorChanged: function (cmp) {
+
+                            }
+                        }
+                    } ,
+                    {
+                        xtype: 'md-ColorPickerMain',
+                        bottom:40,
+                        right:150,
+
+
+                        listeners: {
+                            onColorChanged: function (cmp) {
+
+                            }
+                        }
+                    } ,
+                    {
+                        xtype: 'md-ColorPickerMain',
+                        top:0,
+                        right:150,
+
+
+                        listeners: {
+                            onColorChanged: function (cmp) {
+
+                            }
+                        }
+                    }  ,
+                    {
+                        xtype: 'md-ColorPickerMain',
+
+
+                         centered:true,
+                        listeners: {
+                            onColorChanged: function (cmp) {
+
+                            }
+                        }
+                    }
+                ]
             }
 
 

@@ -10,6 +10,9 @@ Ext.define('Material.components.List', {
     requires: [
         'Material.helpers.RippleService'
     ],
+   /* config: {
+    for:''
+    },*/
 
     /**
      * @private
@@ -24,6 +27,19 @@ Ext.define('Material.components.List', {
      * */
     initialize: function() {
         this.callParent();
+        if(this.getCls()=='forList')
+        {
+            this.element.addCls('forList');
+
+
+        }
+        else
+        if(this.getCls()=='forColorPicker')
+        {
+            this.element.addCls('forColorPicker');
+
+
+        }
 
     },
 

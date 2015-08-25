@@ -32,6 +32,8 @@ Ext.define('Material.components.field.Select', {
                 height: (Ext.os.is.BlackBerry && Ext.os.version.getMajor() === 10) ? '12em' : (Ext.os.is.Phone ? '12.5em' : '22em'),
                 items: {
                     xtype: 'list',
+                    cls:'forList',
+
                     isMenu: true,
                     store: this.getStore(),
                     itemTpl: '<span class="x-list-label">{' + this.getDisplayField() + ':htmlEncode}</span>',

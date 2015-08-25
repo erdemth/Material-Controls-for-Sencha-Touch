@@ -195,5 +195,15 @@
     &.x-field-small {
       width: $md-field-max-width / 4;
     }
+    .x-field .x-input-el {
+      background: transparent!important;
+
+    }
+    .x-field .x-field-input, .x-field .x-input-el
+
+    {
+      background: transparent!important;
+
+    }
   }
 }

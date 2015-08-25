@@ -33,6 +33,13 @@
           }
         }
       }
+      .x-component-outer
+      {
+
+
+          background: #eeeeee!important;
+
+      }
       .x-toolbar.x-toolbar-dark {
         background-color: #fff !important;
 
@@ -81,7 +88,8 @@
     }
   }
   .x-field .x-field-input, .x-field .x-input-el {
-    background: #eeeeee;
-    // padding-top: 10px;
+
+    background: transparent;
   }
+
 }

@@ -75,7 +75,7 @@
     left: 0;
     ///width: 100%;
     right: 0;
-    z-index: -10;
+    z-index: -1;
     height: 100%;
     background-color: #b1ac9c;
   }
@@ -84,7 +84,7 @@
         -webkit-transition: width 0.05s linear;
         transition: width 0.05s linear;
         background-color: rgb(102,187,106);
-      z-index: -10;
+      z-index: -1;
     }
 
   .md-slider .left {
@@ -124,7 +124,7 @@
     transition: transform 0.1s linear;
   }
     .md-slider .md-thumb {
-        z-index: 10;
+        z-index: 11;
         position: absolute;
         left: -19px;
         top: 5px;
@@ -148,10 +148,10 @@
         border: 3px solid;
         border-color: rgb(102,187,106);
         background-color: rgb(102,187,106);
-        z-index: 10!important;
+        z-index: 11!important;
     }
   .md-slider .md-thumbL {
-    z-index: 10;
+    z-index: 11;
     position: absolute;
     left: -19px;
     top: 5px;
@@ -165,7 +165,7 @@
   }
 
   .md-slider .md-thumbL:after {
-    content: '';
+   // content: '';
     position: absolute;
     left: 3px;
     top: 3px;
@@ -175,7 +175,7 @@
     border: 3px solid;
     border-color: rgb(102,187,106);
     background-color: rgb(102,187,106);
-    z-index: 10!important;
+    z-index: 11!important;
   }
 
     .md-slider .md-sign {
@@ -222,7 +222,7 @@
     }
 
     .md-slider .md-sign .md-thumb-text {
-        z-index: 10!important;
+        z-index: 11!important;
         font-size: 12px;
         font-weight: bold;
     }
@@ -275,7 +275,19 @@
   .md-slider.md-min .md-thumbL:after {
     background-color: white;
   }
+  .md-slider.md-min .md-thumb:after {
+    background-color: white;
+  }
 
+  .md-slider.md-red .md-thumbL:after {
+    background-color: red;
+  }
+  .md-slider.md-green .md-thumb:after {
+    background-color: green;
+  }
+  .md-slider.md-blue .md-thumbL:after {
+    background-color: blue;
+  }
     .md-slider.md-min .md-sign {
         opacity: 0;
     }

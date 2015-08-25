@@ -113,11 +113,12 @@
 
         valueLeft: 0,
 
-         typeTick:'notradius',
+        typeTick:'notradius',
 
         type: 'tick',
-
-        sliderLeftCls: 'md-slider-left'
+        tick :'show',
+        sliderLeftCls: 'md-slider-left',
+        codeColor:''
 
 
 
@@ -125,9 +126,11 @@
 
     updateAll: function () {
         this.refreshSliderDimensions();
-        this.render();
-        this.renderLeft();         //----------------trunghq
+
+        this.renderLeft();
+        this.render();//----------------trunghq
         this.redrawTicks();
+
     },
 
     updateMin: function () {
@@ -173,7 +176,7 @@
         if (!this.tickCanvas) {
             this.tickCanvas = document.createElement("DIV");
             this.tickCanvas.style.position='absolute';
-
+            if(this.getTick()==="hidden") this.tickCanvas.style.display="none";
             // var dimensions = this.getWidth();
             //alert(dimensions);
             this.tickCanvas.style.width = this.getWidth();
@@ -188,8 +191,8 @@
 
                 var span = document.createElement("Span");
                 span.style.position="absolute";
-               // span.style.fontSize=" 15px ";
-               // span.style.color="brown";
+                // span.style.fontSize=" 15px ";
+                // span.style.color="brown";
                 span.style.width ="2px";
                 span.style.height = "6px";
 
@@ -201,7 +204,7 @@
                 }
 
                 span.style.background="#b1ac9c";
-               // var t = document.createTextNode(i * step);
+                // var t = document.createTextNode(i * step);
                 //span.appendChild(t);
                 span.style.marginLeft = distance+"px";
                 span.style.marginTop = "-4px";
@@ -217,10 +220,10 @@
         }
 
         if (!this.tickCanvasText) {
-        this.tickCanvasText = document.createElement("DIV");
-        this.tickCanvasText.style.marginTop ="-47px" ;
+            this.tickCanvasText = document.createElement("DIV");
+            this.tickCanvasText.style.marginTop ="-47px" ;
 
-        this.tickCanvasText.style.width = this.getWidth();
+            this.tickCanvasText.style.width = this.getWidth();
             for (var j = 0; j <= numSteps; j++) {
 
                 if (this.getType() == 'tickSingleRight') {
@@ -234,9 +237,9 @@
                     span.style.opacity='0';
                     span.style.webkitTransitionDuration = '0.3s';
                     span.style.MozTransitionDuration = '0.4s';
-                   /* span.style.webkitTransitionProperty = 'width';
-                    span.style.webkitTransitionProperty = 'height';*/
-                        span.style.marginLeft = distance-15+"px";
+                    /* span.style.webkitTransitionProperty = 'width';
+                     span.style.webkitTransitionProperty = 'height';*/
+                    span.style.marginLeft = distance-15+"px";
 
                     //////////////////
                     var span1 = document.createElement("Span");
@@ -252,7 +255,8 @@
                     span1.style.borderRadius = '50%';
                     span1.style.background = 'transparent';
                     span1.style.textAlign = "center";
-                    span1.style.paddingTop = "4px";
+                    span1.style.paddingTop = "6px";
+                    span1.style.fontSize="12px";
 
 
 
@@ -266,11 +270,12 @@
                     span2.style.display = 'inline-block';
                     //span2.style.transform = 'scale(1,1.2)';
                     span2.style.transform = 'rotate(135deg)';
+                    span2.style.webkitTransform = 'rotate(135deg)';
                     span2.style.background = '#66BB6c';
                     span2.style.webkitTransitionDuration = '0.3s';
                     span2.style.MozTransitionDuration = '0.4s';
                     /*span2.style.webkitTransitionProperty = 'width';
-                    span2.style.webkitTransitionProperty = 'height';*/
+                     span2.style.webkitTransitionProperty = 'height';*/
                     span2.style.margin='auto';
                     //top:0px;
                     span2.style.left='0px';
@@ -298,17 +303,17 @@
                     distance =( Math.floor(this.getWidth() * (j / numSteps)))/(1);
                     var span = document.createElement("Span");
                     span.style.position="absolute";
-                   // span.style.fontSize=" 1px ";
+                    // span.style.fontSize=" 1px ";
                     span.style.color="white";
                     span.style.background="transparent"  ;
                     span.style.width= '30px';
                     span.style.height='30px';
                     span.style.opacity='0';
                     span.style.webkitTransitionDuration = '0.3s';
-                   /* span.style.webkitTransitionProperty = 'width';
-                    span.style.webkitTransitionProperty = 'height';*/
+                    /* span.style.webkitTransitionProperty = 'width';
+                     span.style.webkitTransitionProperty = 'height';*/
                     span.style.MozTransitionDuration = '0.4s';
-                        span.style.marginLeft = distance-15+"px";
+                    span.style.marginLeft = distance-15+"px";
 
                     //////////////////
                     var span1 = document.createElement("Span");
@@ -324,25 +329,26 @@
                     span1.style.borderRadius = '50%';
                     span1.style.background = 'transparent';
                     span1.style.textAlign = "center";
-                    span1.style.paddingTop = "4px";
-
+                    span1.style.paddingTop = "6px";
+                    span1.style.fontSize="12px";
 
 
                     var t = document.createTextNode(j * step);
                     span1.appendChild(t);
 
-                   span.appendChild(span1);
+                    span.appendChild(span1);
                     /////////////
                     var span2 = document.createElement("Span");
                     span2.style.position = "absolute";
                     span2.style.display = 'inline-block';
                     //span2.style.transform = 'scale(1,1.2)';
                     span2.style.transform = 'rotate(135deg)';
+                    span2.style.webkitTransform = 'rotate(135deg)';
                     span2.style.background = '#66BB6c';
                     span2.style.webkitTransitionDuration = '0.3s';
                     span2.style.MozTransitionDuration = '0.4s';
-                 /*   span2.style.webkitTransitionProperty = 'width';
-                    span2.style.webkitTransitionProperty = 'height';*/
+                    /*   span2.style.webkitTransitionProperty = 'width';
+                     span2.style.webkitTransitionProperty = 'height';*/
                     span2.style.margin='auto';
                     //top:0px;
                     span2.style.left='0px';
@@ -367,7 +373,7 @@
 
             }
 
-        this.trackContainerElement.appendChild(this.tickCanvasText);
+            this.trackContainerElement.appendChild(this.tickCanvasText);
         }
     },
 
@@ -393,6 +399,7 @@
     updateValue: function (newValue, oldValue) {
         this.render();
         this.fireEvent('change', this, this.thumbElement, newValue, oldValue);
+
     },
     updateValueLeft: function (newValue, oldValue) {
         this.renderLeft();
@@ -414,6 +421,7 @@
             value = this.getValueLeft(),
             percent = (value - min) / (max - min);
         this.setSliderPercentLeft(percent);
+
     },
 
     minMaxValidator: function (value) {
@@ -445,11 +453,11 @@
          this.draggable && this.draggable.getTranslatable().translate((+1) * (this.getSliderDimensions().width) * percent, 0);
          }*/
         //console.log(this.getSliderDimensions().width);
-        if (percent === 0) {
+       /* if (percent === 0) {
             this.element.addCls('md-min');
         } else {
             this.element.removeCls('md-min');
-        }
+        }*/
     },
     setSliderPercentLeft: function (percent) {
         this.trackFillElementLeft.setWidth((percent * 100) + '%');
@@ -460,17 +468,21 @@
          }
          else if (this.getType() == 'slider-left') {*/
         this.draggable && this.draggable.getTranslatable().translate((+1) * (this.getSliderDimensions().width) * percent, 0);
+      //  this.thumbElementLeft.setStyle({transform:'translate(10, 0)'});
         //}
         //console.log(this.getSliderDimensions().width);
-        if (percent === 0) {
+       /* if (percent === 0) {
             this.element.addCls('md-min');
         } else {
             this.element.removeCls('md-min');
-        }
+        }*/
     },
 
     initialize: function () {
+
         this.callParent();
+
+
         this.element.addCls('md-slider');
 
         if (this.getType() == 'tickSingleLeft' || this.getType() == 'notickSingleLeft') {
@@ -544,7 +556,7 @@
                     else if (ev.target.className === 'md-thumb')
                         this.onPan(this.element, ev);
                 }
-               // this.onPan(this.element, ev);
+                // this.onPan(this.element, ev);
                 ///////////-----------trunghq----------------//////////////
                 ev.stopPropagation();
             },
@@ -599,24 +611,76 @@
             scope: this
         });
 
-        //this.draggable = draggable;
+
+       /* if (this.getType() == 'tickSingleRight' || this.getType() == 'notickSingleRight') {
+            this.draggable = draggable;
+        }
+        else if (this.getType() == 'tickSingleLeft' || this.getType() == 'notickSingleLeft') {
+            this.draggable = draggableLeft;
+
+        }*/
+        if (this.getType() == 'tickSingleRight' || this.getType() == 'notickSingleRight'||this.getType() == 'tickSingleLeft' || this.getType() == 'notickSingleLeft')
+        {
+         if(this.getCodeColor()=='red')
+         {
+             this.element.addCls('md-red');
+           this.thumbElementLeft.setStyle({'background-color': 'red' });
+
+             this.trackFillElementLeft.setStyle({'background-color': 'red' });
+         }
+        else if(this.getCodeColor()=='green')
+         {
+             this.element.addCls('md-green');
+            this.thumbElementLeft.setStyle({'background-color': 'green' });
+             this.trackFillElementLeft.setStyle({'background-color': 'green' });
+         }
+        else
+         if(this.getCodeColor()=='blue')
+         {
+             this.element.addCls('md-blue');
+             this.thumbElementLeft.setStyle({'background-color': 'blue' });
+             this.trackFillElementLeft.setStyle({'background-color': 'blue' });
+         }
+        else
+         {
+
+             this.thumbElementLeft.setStyle({'background-color': '  rgb(102,187,106)' });
+             this.trackFillElementLeft.setStyle({'background-color': '  rgb(102,187,106)' });
+
+         }
+        }
+        else
+        {
+            this.thumbElementLeft.setStyle({'background-color': ' rgb(102,187,106)' });
+            this.trackFillElementLeft.setStyle({'background-color': '#b1ac9c' });
+        }
+
         var self = this;
 
         self.element.on({
             'resize': 'onResize',
             scope: self
         });
+       /* var thumL = document.getElementsByClassName('.md-thumb-containerLeft x-size-monitored x-paint-monitored x-draggable');
+        alert(thumL);
 
+        if(!thumL)
+        thumL.style.transform ='translate3d(30px, 0px, 0px)';*/
+       // this.doSlideLeft(10);
         return this;
 
+
     },
+
 
     onResize: function () {
         //alert('resize');
         var self = this;
+
         setTimeout(function () {
             self.refreshSliderDimensions();
             self.updateAll();
+
         });
     },
 
@@ -691,17 +755,17 @@
         var min = this.getMin(),
             max = this.getMax(),
             value = this.getValue();
-         var   percent;
+        var   percent;
         percent =  (value - min) / (max - min);
         /*if (this.getType() == 'tick') {
-            percent = 1-(this.getValue() - min) / (max - min);
-            console.log(percent);
-        }
+         percent = 1-(this.getValue() - min) / (max - min);
+         console.log(percent);
+         }
 
-        else {
-            percent =  (value - min) / (max - min);
+         else {
+         percent =  (value - min) / (max - min);
 
-        }*/
+         }*/
         var percent1 =  (this.getValueLeft() - min) / (max - min);
 
 
@@ -830,9 +894,9 @@
      * @param x
      */
     adjustThumbPosition: function (x) {
-        /* var exactVal = this.percentToValue(this.positionToPercent(x));
+         var exactVal = this.percentToValue(this.positionToPercent(x));
          var closestVal = this.minMaxValidator(this.stepValidator(exactVal));
-         this.setSliderPercent(this.positionToPercent(x));*/
+         this.setSliderPercent(this.positionToPercent(x));
     },
 
     /**
