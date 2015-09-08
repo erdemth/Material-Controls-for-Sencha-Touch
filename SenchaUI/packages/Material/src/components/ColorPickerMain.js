@@ -1,17 +1,10 @@
 ﻿Ext.define('Material.components.ColorPickerMain', {
     extend: 'Ext.Container',
-    //extend: 'Ext.field.DatePicker',
 
     xtype: 'md-ColorPickerMain',
     requires: [
-
         'Material.components.ColorPicker'
-
-
-
-
     ],
-
 
     config: {
         fortype:'down',
@@ -21,7 +14,7 @@
         items: {
             xtype: 'container',
 
-            width:'370px',
+            width:'395px',
             style: 'background:transparent',
             itemId: 'root',
             items: [
@@ -33,11 +26,7 @@
                     width: 100,
                     left:0,
                     itemId:'lb',
-
-                    style: 'background:trasparent;position:absolute; line-height:35px; height:35px'
-
-                  //  cls: 'md-flab'
-
+                    style: 'background:trasparent; position:absolute; line-height:35px; height:35px'
                 },
                 {
                     xtype: 'label',
@@ -46,16 +35,14 @@
                     width: 100,
                     top:40,
                     left:0,
-                    style: 'background-color:transparent;position:absolute;vertical-align: middle; textAlign:center; line-height:35px; height:35px',
+                    style: 'background-color:transparent; position:absolute; vertical-align: middle; textAlign:center; line-height:35px; height:35px',
                     itemId: 'btnColor'
-                   // cls: 'md-flab'
-                }
-                ,
+                },
                 {
                     xtype: 'md-ColorPicker',
                     itemId: 'colorPicker',
                     top: 80,
-                    right:0,
+                    left:'-50%',
                     width:'100%'
                 }
             ]
@@ -73,8 +60,6 @@
         var h1 = 35;//window.innerHeight;
         var w = 500;//window.innerWidth;
         var h = 500;//window.innerHeight;
-     /*   root.setHeight(h1);
-        root.setWidth(w1);*/
 
         var colorPicker = me.getComponent('root').getComponent('colorPicker');
         var btnColor = me.getComponent('root').getComponent('btnColor');
@@ -87,9 +72,6 @@
 
         btnColor.element.on('tap', function () {
             colorPicker.showPop();
-            /*root.setHeight(h);
-            root.setWidth(w);*/
-
         });
 
         if(this.getFortype()=='up')
@@ -110,17 +92,11 @@
             var argsColor = {oldValue: oldValue, newValue: me.getComponent('root').getComponent('colorPicker').codeColor()};
 
             me.fireEvent('onColorChanged', argsColor);
-           /* root.setHeight(h1);
-            root.setWidth(w1);*/
         });
 
         colorPicker.getComponent('parent1').getComponent('parent22').getComponent('btnCancel').on('tap', function () {
             btnColor.element.show();
             me.getComponent('root').getComponent('colorPicker').hidePop();
-           /* root.setHeight(h1);
-            root.setWidth(w1);*/
-
-
         });
 
 

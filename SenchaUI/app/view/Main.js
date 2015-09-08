@@ -17,7 +17,8 @@ Ext.define('SenchaUI.view.Main', {
         'Material.components.field.Select',             //ok
         'Material.components.DatePicker',
         'Material.components.field.DatePicker',
-        'Material.components.ColorPickerMain'
+        'Material.components.ColorPickerMain',
+        'SenchaUI.form.ChangePasswordPopup'
     ],
 
     config: {
@@ -43,44 +44,111 @@ Ext.define('SenchaUI.view.Main', {
 
                                 items: [
                                     {
-                                        xtype: 'button',
+                                        xtype: 'buttonM',
 
                                         text: '+',
-                                        style: 'fontSize: 50px',
+                                        style: 'fontSize: 12px',
 
                                         width: 150,
                                         height: 150,
-                                        cls: 'md-raised'
+                                        cls: 'md-raised',
+                                        listeners: {
 
 
+                                            tap: function () {
+
+                                                var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                            me.setText(cmp.newValue);
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();
+
+
+                                            }
+                                        }
                                     },
 
                                     {
-                                        xtype: 'button',
+                                        xtype: 'buttonM',
 
-                                        style: 'background: #18FFFF',
+                                        style: 'background: #504Eab;font-size:14px',
                                         width: 150,
                                         height: 150,
                                         iconCls: 'settings',
-                                        cls: 'md-flat'
+                                        cls: 'md-flat',
+                                        listeners: {
+
+
+                                            tap: function () {
+
+                                              /*  var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();*/
+
+
+                                            }
+                                        }
+
+
 
                                     }
                                     ,
 
                                     {
-                                        xtype: 'button',
+                                        xtype: 'buttonM',
 
                                         text: 'Button',
-                                        style: 'color:#1976D2',
-
+                                        style: 'color:#1976D2; font-size:14px',
+                                        cls:'md-trasparent',
 
                                         width: 150,
-                                        height: 150
+                                        height: 150,
+                                        listeners: {
+
+
+                                            tap: function () {
+
+                                               /* var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();*/
+
+
+                                            }
+                                        }
 
 
                                     },
                                     {
-                                        xtype: 'button',
+                                        xtype: 'buttonM',
                                         /*iconAlign:'center',*/
                                         text: 'button',
                                         style: 'color:#eeeeee',
@@ -89,7 +157,29 @@ Ext.define('SenchaUI.view.Main', {
                                         height: 36,
                                         style: 'fontSize: 12px',
                                         // iconCls:'settings',
-                                        cls: 'md-flat'
+                                        cls: 'md-flat' ,
+                                        listeners: {
+
+
+                                            tap: function () {
+
+                                             /*   var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();*/
+
+
+                                            }
+                                        }
 
                                     }
 
@@ -103,44 +193,110 @@ Ext.define('SenchaUI.view.Main', {
 
                                 items: [
                                     {
-                                        xtype: 'button',
+                                        xtype: 'buttonM',
 
                                         text: '+',
                                         style: 'fontSize: 50px; background:#0F9D58',
 
                                         width: 150,
                                         height: 150,
-                                        cls: 'md-raised'
+                                        cls: 'md-raised' ,
+                                        listeners: {
+
+
+                                            tap: function () {
+
+                                               /* var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();*/
+
+
+                                            }
+                                        }
 
 
                                     },
 
                                     {
-                                        xtype: 'button',
-                                        style: 'background:#FF5252',
+                                        xtype: 'buttonM',
+                                        style: 'background:#FF5252;font-size:14px',
 
                                         width: 150,
                                         height: 150,
                                         iconCls: 'settings',
-                                        cls: 'md-flat'
+                                        cls: 'md-flat' ,
+                                        listeners: {
+
+
+                                            tap: function () {
+
+                                               /* var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();*/
+
+
+                                            }
+                                        }
 
                                     }
                                     ,
 
                                     {
-                                        xtype: 'button',
+                                        xtype: 'buttonM',
 
                                         text: 'Button',
-                                        style: 'color:#1976D2',
-
+                                        style: 'color:#1976D2;font-size:14px',
+                                        cls:'md-trasparent',
 
                                         width: 150,
-                                        height: 150
+                                        height: 150,
+                                        listeners: {
+
+
+                                            tap: function () {
+
+                                               /* var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();*/
+
+
+                                            }
+                                        }
 
 
                                     },
                                     {
-                                        xtype: 'button',
+                                        xtype: 'buttonM',
 
                                         text: 'button',
                                         margin: 'auto',
@@ -148,8 +304,35 @@ Ext.define('SenchaUI.view.Main', {
                                         height: 36,
                                         style: 'fontSize: 12px;background:#FF4081',
                                         // iconCls:'settings',
-                                        cls: 'md-flat'
+                                        cls: 'md-flat' ,
+                                        listeners: {
 
+
+                                            tap: function () {
+
+                                              /*  var me = this;
+                                                if (!this.loginView) this.loginView = Ext.widget('ColorPicker');
+
+                                                this.loginView.addListener({
+                                                        onChangedColor: function (cmp) {
+                                                            //  alert(cmp.oldValue + "," + cmp.newValue);
+                                                            console.log(cmp.oldValue + "," + cmp.newValue);
+                                                            me.setStyle({background: cmp.newValue});
+                                                        }
+                                                    }
+                                                );
+                                                //Ext.Viewport.add(this.loginView);
+                                                this.loginView.show();*/
+
+
+                                            }
+                                        }
+
+                                    } ,
+                                    {
+                                        xtype:'button',
+                                        width:200,
+                                        height:200
                                     }
 
                                 ]
@@ -418,6 +601,7 @@ Ext.define('SenchaUI.view.Main', {
                                 height: 80,
                                 max: 100,
                                 min: 0,
+                                value: 50,
                                 step: 1,
                                 type: 'notickSingleLeft'
                                 //centered:true
@@ -644,7 +828,7 @@ Ext.define('SenchaUI.view.Main', {
                                 height: 36,
                                 /* top: 300,
                                  left: 300,*/
-                                style: 'fontSize: 12px;background:#18FFFF',
+                                style: 'fontSize: 12px;background:#0F9D58',
                                 handler: function () {
                                     Ext.Msg.confirm("", "Are you sure you want to do that?", Ext.emptyFn);
                                 }
@@ -658,7 +842,7 @@ Ext.define('SenchaUI.view.Main', {
                                 right: 0,
                                 width: 84,
                                 height: 36,
-                                style: 'fontSize: 12px;background:#18FFFF',
+                                style: 'fontSize: 12px;background:#0F9D58',
                                 /*top: 300,
                                  right: 300,*/
                                 handler: function () {
@@ -945,75 +1129,53 @@ Ext.define('SenchaUI.view.Main', {
                 title: 'DATE-PICKER',
                 items: {
                     xtype: 'md-datepicker',
-                    centered: true
+                    centered: true,
+                    style: 'background:#eeeeee'
 
                 }
             },
             {
                 xtype: 'panel',
                 id: '',
+                scrollable: true,
+                width: '100%',
+                height: '100%',
                 style: 'background-color:white',
                 title: 'COLOR-PICKER',
                 items: [
+
                     {
                         xtype: 'md-ColorPickerMain',
-                        top:0,
-                        left:0,
 
+                        left: 10,
+                        top: 10,
+                        //  width:'30%',
+
+                        labelColor: 'black',
+                        texLabel: 'Label Name',
 
                         listeners: {
                             onColorChanged: function (cmp) {
-                                 alert(cmp.oldValue + "," + cmp.newValue);
+                                console.log(cmp.oldValue + ',' + cmp.newValue);
                             }
                         }
                     } ,
                     {
                         xtype: 'md-ColorPickerMain',
-                        bottom:40,
-                        left:0,
+                        left: 600,
+                        top: 600,
 
-
-                        listeners: {
-                            onColorChanged: function (cmp) {
-
-                            }
-                        }
-                    } ,
-                    {
-                        xtype: 'md-ColorPickerMain',
-                        bottom:40,
-                        right:150,
-
-
-                        listeners: {
-                            onColorChanged: function (cmp) {
-
-                            }
-                        }
-                    } ,
-                    {
-                        xtype: 'md-ColorPickerMain',
-                        top:0,
-                        right:150,
-
-
-                        listeners: {
-                            onColorChanged: function (cmp) {
-
-                            }
-                        }
-                    }  ,
-                    {
-                        xtype: 'md-ColorPickerMain',
-
-
-                         centered:true,
+                        //  width:'30%',
+                        labelColor: 'red',
+                        texLabel: 'Label name',
+                        fortype: 'up',
                         listeners: {
                             onColorChanged: function (cmp) {
 
                             }
                         }
                     }
+
                 ]
             }
 

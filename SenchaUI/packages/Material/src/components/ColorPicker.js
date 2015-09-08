@@ -8,17 +8,13 @@
     config: {
         // We give it a left and top property
         //to make it floating by default
-        /*left: 0,
-         top: 0,*/
-
+        oldV: '#000000',
+        newV: '#000000',
         itemIndex: '',
         // Make it modal so you can click the mask to hide the overlay
         modal: true,
         hideOnMaskTap: true,
         centered: true,
-
-        // Set the width and height of the panel
-
 
         showAnimation: {
             type: 'popIn',
@@ -36,14 +32,14 @@
                 xtype: 'container',
                 layout: 'vbox',
 
-                width:'350px',
+                width: '380px',
                 itemId: 'parent1',
                 items: [
                     {
                         xtype: 'container',
                         itemId: 'parent2',
 
-                        width:'100%',
+                        width: '100%',
                         layout: 'hbox',
                         items: [
                             {
@@ -51,27 +47,27 @@
                                 layout: 'vbox',
                                 itemId: 'parent3',
 
-                                width:'70%',
+                                width: '70%',
                                 padding: 10,
                                 items: [
                                     {
                                         xtype: 'container',
                                         itemId: 'tpl',
                                         style: 'background:rgb(0,0,0); marginBottom:25px',
-                                        width:'100%',
+                                        width: '100%',
                                         height: 150,
                                         items: {
                                             xtype: 'textfield',
                                             itemId: 'code-color',
                                             text: '#Color',
                                             clearIcon: false,
-                                            style: 'font-size: 100%; background:transparent;padding-left:20%',
+                                            style: 'font-size: 100%; background:transparent;margin:auto; width:40%',
                                             centered: true
                                         }
                                     },
                                     {
                                         xtype: 'md-slider',
-                                        width:'100%',
+                                        width: '100%',
                                         height: 60,
                                         max: 255,
                                         itemId: 'itemIdR',
@@ -84,7 +80,7 @@
                                     {
                                         xtype: 'md-slider',
                                         itemId: 'itemIdG',
-                                        width:'100%',
+                                        width: '100%',
                                         height: 60,
                                         max: 255,
                                         min: 0,
@@ -96,7 +92,7 @@
                                     {
                                         xtype: 'md-slider',
                                         itemId: 'itemIdB',
-                                        width:'100%',
+                                        width: '100%',
                                         height: 60,
                                         max: 255,
                                         min: 0,
@@ -109,10 +105,9 @@
                             },
                             {
                                 xtype: 'panel',
-                                //height: 400,
                                 itemId: 'parent33',
                                 width: '30%',
-                                style: 'margin:10px 10px 0px 0px',
+                                style: 'margin-left:6px;',
                                 height: 350,
                                 items: [
                                     {
@@ -120,6 +115,8 @@
                                         itemId: 'listItemId',
                                         itemTpl: '<div style="text-align: center; vertical-align: middle;display: table; font-size: 12px; margin-top: -5px; margin-left: 18px">' + '{value}' + '</div>',
                                         cls: 'forColorPicker',
+
+                                        style: 'padding:10px 10px 0px 0px;background:transparent',
                                         height: '100%',
                                         width: '100%',
                                         data: [
@@ -152,10 +149,11 @@
                         ]
                     },
                     {
-                        xtype: 'toolbar',
-
+                        xtype: 'container',
+                        style:'background:transparent',
                         itemId: 'parent22',
                         width: '100%',
+
                         layout: {
                             type: 'hbox',
                             pack: 'right',
@@ -169,24 +167,13 @@
                                 xtype: 'button',
                                 text: 'Cancel',
                                 itemId: 'btnCancel',
-                                cls: 'md-flat',
-                                cls: 'md-flab'
+                                cls: 'md-button-toolbar'
                             },
                             {
                                 xtype: 'button',
                                 text: 'OK',
-                                cls: 'md-flat',
+                                cls: 'md-button-toolbar',
                                 itemId: 'btnOk'
-                               /* listeners :
-                                {
-                                    element : 'element',
-                                    tap : function(e, t)
-                                    {
-                                        var me = this;
-                                        me.up('ColorPicker').setItemIndex(1);
-
-                                    }
-                                }*/
                             }
                         ]
                     }
@@ -197,13 +184,6 @@
     initialize: function () {
         this.callParent();
         var me = this;
-
-
-        this.getComponent('parent1').getComponent('parent2').getComponent('parent3').setStyle('opacity:0.9');
-
-        this.getComponent('parent1').getComponent('parent22').getComponent('btnOk').on('tap', function () {
-            me.hidePop();
-        });
         var r = this.getComponent('parent1').getComponent('parent2').getComponent('parent3').getComponent('itemIdR');
 
         var g = this.getComponent('parent1').getComponent('parent2').getComponent('parent3').getComponent('itemIdG')
@@ -213,13 +193,35 @@
         var tpl = this.getComponent('parent1').getComponent('parent2').getComponent('parent3').getComponent('tpl');
         var codeColor = this.getComponent('parent1').getComponent('parent2').getComponent('parent3').getComponent('tpl').getComponent('code-color');
 
+
+        this.getComponent('parent1').getComponent('parent2').getComponent('parent3').setStyle('opacity:0.9');
+
+        this.setValueColorPicker(this.getNewV());
+        this.getComponent('parent1').getComponent('parent22').getComponent('btnOk').on('tap', function () {
+
+
+            var argsColor = {oldValue: me.getOldV(), newValue: me.getNewV()};
+            me.fireEvent('onChangedColor', argsColor);
+            me.hidePop();
+
+
+        });
+        codeColor.element.on({
+            scope: this,
+            'touchstart': function (ev) {
+                me.setOldV(codeColor.getValue());
+            }});
+
         codeColor.on('change', function () {
             tpl.setStyle('background:' + codeColor.getValue());
+            me.setNewV(codeColor.getValue());
+
             me.chanceValueSlider(codeColor.getValue());
         });
         r.element.on({
             scope: this,
             'touchstart': function (ev) {
+                me.setOldV(codeColor.getValue());
             },
             'touchend': function (ev) {
 
@@ -232,8 +234,7 @@
 
 
                 codeColor.setValue(this.rgbToHex(vR, vG, vB).toUpperCase());
-
-
+                me.setNewV(this.rgbToHex(vR, vG, vB).toUpperCase());
                 if (vR < 150 && vG < 150 && vB < 150)
                     codeColor.setStyle('-webkit-text-fill-color:white');
                 else
@@ -250,7 +251,7 @@
                 var vB = b.getValueLeft();
 
                 codeColor.setValue(this.rgbToHex(vR, vG, vB).toUpperCase());
-
+                me.setNewV(this.rgbToHex(vR, vG, vB).toUpperCase());
                 if (vR < 150 && vG < 150 && vB < 150)
                     codeColor.setStyle('-webkit-text-fill-color:white');
                 else
@@ -261,6 +262,7 @@
             scope: this,
 
             'touchstart': function (ev) {
+                me.setOldV(codeColor.getValue());
             },
             'touchend': function (ev) {
 
@@ -273,7 +275,7 @@
 
 
                 codeColor.setValue(this.rgbToHex(vR, vG, vB).toUpperCase());
-
+                me.setNewV(this.rgbToHex(vR, vG, vB).toUpperCase());
 
                 if (vR < 150 && vG < 150 && vB < 150)
                     codeColor.setStyle('-webkit-text-fill-color:white');
@@ -290,7 +292,7 @@
                 var vB = b.getValueLeft();
 
                 codeColor.setValue(this.rgbToHex(vR, vG, vB).toUpperCase());
-
+                me.setNewV(this.rgbToHex(vR, vG, vB).toUpperCase());
                 if (vR < 150 && vG < 150 && vB < 150)
                     codeColor.setStyle('-webkit-text-fill-color:white');
                 else
@@ -301,6 +303,7 @@
             scope: this,
 
             'touchstart': function (ev) {
+                me.setOldV(codeColor.getValue());
             },
             'touchend': function (ev) {
 
@@ -313,7 +316,7 @@
 
 
                 codeColor.setValue(this.rgbToHex(vR, vG, vB).toUpperCase());
-
+                me.setNewV(this.rgbToHex(vR, vG, vB).toUpperCase());
 
                 if (vR < 150 && vG < 150 && vB < 150)
                     codeColor.setStyle('-webkit-text-fill-color:white');
@@ -329,7 +332,7 @@
                 var vB = b.getValueLeft();
 
                 codeColor.setValue(this.rgbToHex(vR, vG, vB).toUpperCase());
-
+                me.setNewV(this.rgbToHex(vR, vG, vB).toUpperCase());
                 if (vR < 150 && vG < 150 && vB < 150)
                     codeColor.setStyle('-webkit-text-fill-color:white');
                 else
@@ -341,8 +344,9 @@
             {
                 itemtap: function (list, index, item, record) {
                     me.setColorItemList(record.get('value'));
+                    me.setOldV(me.codeColor());
                     me.setCodeColor(record.get('value'));
-
+                    me.setNewV(record.get('value'));
                     me.chanceValueSlider(record.get('value'));
                     me.chanTextColor();
 
@@ -401,6 +405,9 @@
             codeColor.setStyle('-webkit-text-fill-color:black');
     },
     hexToRGB: function (hex) {
+        if (hex.charAt(0) == '#') {
+            hex = hex.substr(1);
+        }
         var r, g, b;
         r = hex.charAt(0) + "" + hex.charAt(1);
         g = hex.charAt(2) + "" + hex.charAt(3);
@@ -409,7 +416,26 @@
         r = parseInt(r, 16);
         g = parseInt(g, 16);
         b = parseInt(b, 16);
+
         return 'rgb(' + r + ',' + g + ',' + b + ')';
+    },
+    hexToRGBComponent: function (component, hex) {
+        if (hex.charAt(0) == '#') {
+            hex = hex.substr(1);
+        }
+        var r, g, b;
+        r = hex.charAt(0) + "" + hex.charAt(1);
+        g = hex.charAt(2) + "" + hex.charAt(3);
+        b = hex.charAt(4) + "" + hex.charAt(5);
+
+        r = parseInt(r, 16);
+        g = parseInt(g, 16);
+        b = parseInt(b, 16);
+
+        if (r < 150 && g < 150 && b < 150)
+            component.setStyle({color:'white'});
+        else
+            component.setStyle({color:'black'});
     },
     chanceValueSlider: function (hex) {
         if (hex.charAt(0) == '#') {
@@ -423,7 +449,6 @@
         g.setValueLeft(parseInt(hex.charAt(2) + "" + hex.charAt(3), 16));
         var b = this.getComponent('parent1').getComponent('parent2').getComponent('parent3').getComponent('itemIdB')
         b.setValueLeft(parseInt(hex.charAt(4) + "" + hex.charAt(5), 16));
-
     },
     setValueColorPicker: function (codehexa) {
         this.chanceValueSlider(codehexa);
@@ -431,7 +456,5 @@
         codeColor.setValue(codehexa.toUpperCase());
         var tpl = this.getComponent('parent1').getComponent('parent2').getComponent('parent3').getComponent('tpl');
         tpl.setStyle('background:' + codehexa);
-
     }
-})
-;
+});

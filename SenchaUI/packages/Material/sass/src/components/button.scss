@@ -36,7 +36,7 @@ $button-fab-toast-offset: $toast-height + $toast-margin;
     outline: none;
     border: 0;
     margin: 0;
-    background: transparent;
+
     white-space: nowrap;
     text-align: center;
     text-transform: uppercase;
@@ -49,21 +49,42 @@ $button-fab-toast-offset: $toast-height + $toast-margin;
     text-decoration: none;
     cursor: pointer;
     overflow: hidden;
-    background-color: transparent;
+
     margin: 8px;
     //height: 100px !important;
     // ui circle
 
     //
-   @include border-radius(50%);
+   @include border-radius(5%);
 
-    @include transition(box-shadow $swift-ease-in-out-duration $swift-ease-in-out-timing-function, background-color $swift-ease-in-out-duration $swift-ease-in-out-timing-function, transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function);
+
+    &.md-trasparent {
+      background: transparent;
+      @include border-radius(50%);
+      @include transition(box-shadow $swift-ease-in-out-duration $swift-ease-in-out-timing-function, background-color $swift-ease-in-out-duration $swift-ease-in-out-timing-function, transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function);
+    }
+    &.md-button-toolbar {
+      min-width: 80px;
+      color: blue;
+      font-size: 14px;
+      padding: 6px;
+      background: transparent;
+      @include border-radius(0%);
+      font-weight: normal!important;
+      @include transition(box-shadow $swift-ease-in-out-duration $swift-ease-in-out-timing-function, background-color $swift-ease-in-out-duration $swift-ease-in-out-timing-function, transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function);
+      &:focus,
+      &:hover {
+        background: #cfcfcf!important;
+        background-color: #cfcfcf ;
+      }
+    }
+
 
     &.md-flat {
-      //background: none;
+      @include transition(box-shadow $swift-ease-in-out-duration $swift-ease-in-out-timing-function, background-color $swift-ease-in-out-duration $swift-ease-in-out-timing-function, transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function);
       @include border-radius(5%);
       color: white !important;
-      background-color: #2196F3;
+      background: #2196F3;
       &:hover {
         transform: translate3d(0, -1px, 0);
        // @extend .md-shadow-bottom-z-2;
@@ -72,19 +93,17 @@ $button-fab-toast-offset: $toast-height + $toast-margin;
     }
 
     &.md-raised {
+      @include transition(box-shadow $swift-ease-in-out-duration $swift-ease-in-out-timing-function, background-color $swift-ease-in-out-duration $swift-ease-in-out-timing-function, transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function);
       @include border-radius(50%);
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       -khtml-border-radius: 50%;
       color: white !important;
-      background-color: #2196F3;
+      background: #2196F3;
     }
 
     &.md-fab {
-      // @include fab-position(bottom-right, auto, $button-fab-width/2, $button-fab-height/2, auto);
-      // @include fab-position(bottom-left, auto, auto, $button-fab-height/2, $button-fab-width/2);
-      // @include fab-position(top-right, $button-fab-height/2, $button-fab-width/2, auto, auto);
-      // @include fab-position(top-left, $button-fab-height/2, auto, auto, $button-fab-width/2);
+      @include transition(box-shadow $swift-ease-in-out-duration $swift-ease-in-out-timing-function, background-color $swift-ease-in-out-duration $swift-ease-in-out-timing-function, transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function);
 
       z-index: $z-index-fab;
       width: $button-fab-width;

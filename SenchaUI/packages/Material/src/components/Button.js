@@ -7,8 +7,8 @@
  * the help of #{Material.helper.RippleService}
  * */
 Ext.define('Material.components.Button', {
-    override: 'Ext.Button',
-    xtype: 'button',
+    extend: 'Ext.Button',
+    xtype: 'buttonM',
     //width:'200px !important',
     //height:'200px !important',
 
